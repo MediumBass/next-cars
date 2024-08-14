@@ -34,32 +34,35 @@ const MainContent: React.FC = () => {
   }, [selectedType]);
 
   return (
-    <div className="flex justify-between px-6 py-4 bg-white shadow-md">
-      <Suspense fallback={<Loading />}>
-        <DropBox
-          title={'Choose Vehicle Type'}
-          payload={vehicleTypes}
-          setState={setSelectedType}
-          selectedItem={selectedType}
-        />
-      </Suspense>
-      <Suspense fallback={<Loading />}>
-        <DropBox
-          display={selectedType ? 'none' : ''}
-          title={'Choose Year'}
-          payload={vehicleYears}
-          setState={setSelectedYear}
-          selectedItem={selectedYear}
-        />
-      </Suspense>
-      <Suspense fallback={<Loading />}>
-        <DropBox
-          title={'Choose Maker'}
-          payload={vehicleMakers}
-          setState={setSelectedMaker}
-          selectedItem={selectedMaker}
-        />
-      </Suspense>
+    <div className="flex">
+      <div className="flex justify-between px-6 py-4 bg-white shadow-md">
+        <Suspense fallback={<Loading />}>
+          <DropBox
+            title={'Choose Vehicle Type'}
+            payload={vehicleTypes}
+            setState={setSelectedType}
+            selectedItem={selectedType}
+          />
+        </Suspense>
+        <Suspense fallback={<Loading />}>
+          <DropBox
+            display={selectedType ? 'none' : ''}
+            title={'Choose Year'}
+            payload={vehicleYears}
+            setState={setSelectedYear}
+            selectedItem={selectedYear}
+          />
+        </Suspense>
+        <Suspense fallback={<Loading />}>
+          <DropBox
+            title={'Choose Maker'}
+            payload={vehicleMakers}
+            setState={setSelectedMaker}
+            selectedItem={selectedMaker}
+          />
+        </Suspense>
+      </div>
+
       <Button
         variant={selectedType ? 'destructive' : 'default'}
         onClick={() => handleNextPageClick(selectedMaker, selectedYear)}

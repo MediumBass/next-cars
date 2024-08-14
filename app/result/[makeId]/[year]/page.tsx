@@ -1,19 +1,14 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import CarModel from '../../../../components/ui/CarModel';
 import Header from '@/components/shared/Header';
 import Loading from '@/components/ui/Loading';
-type params=[{
-  makeId?:string,
-  year?:string
-}]
-
-
+import { Button } from '@/components/ui/Button';
 
 export async function generateStaticParams() {
-  const makes:string[]|[] = [];
-  const years:string[]|[] = [];
+  const makes: string[] | [] = [];
+  const years: string[] | [] = [];
 
-  const paramsArray:params = [{}];
+  const paramsArray = [];
 
   makes.forEach((makeId) => {
     years.forEach((year) => {
