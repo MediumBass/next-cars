@@ -1,13 +1,19 @@
-import React, { Suspense } from 'react';
+import React, {Suspense} from 'react';
 import CarModel from '../../../../components/ui/CarModel';
 import Header from '@/components/shared/Header';
 import Loading from '@/components/ui/Loading';
+type params=[{
+  makeId?:string,
+  year?:string
+}]
+
+
 
 export async function generateStaticParams() {
-  const makes = [];
-  const years = [];
+  const makes:string[]|[] = [];
+  const years:string[]|[] = [];
 
-  const paramsArray = [];
+  const paramsArray:params = [{}];
 
   makes.forEach((makeId) => {
     years.forEach((year) => {
@@ -22,8 +28,7 @@ async function fetchCarModels(makeId: string, year: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`
   );
-  const posts = await res.json();
-  return posts;
+  return await res.json();
 }
 
 const CarModelsList = async ({
