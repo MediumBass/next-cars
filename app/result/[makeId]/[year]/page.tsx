@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import CarModel from '../../../../components/ui/CarModel';
 import Header from '@/components/shared/Header';
 import Loading from '@/components/ui/Loading';
-import { Button } from '@/components/ui/Button';
+
 
 export async function generateStaticParams() {
   const makes: string[] | [] = [];
@@ -46,7 +46,7 @@ const CarModelsList = async ({
   }
 
   return (
-    <div className="grid grid-cols-4 gap-2 p-2">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-2">
       {posts.Results.map((item: any) => (
         <CarModel payload={item} key={item.Model_ID} />
       ))}
@@ -61,7 +61,6 @@ const ResultPage = ({
 }) => {
   return (
     <div>
-      <Header />
       <Suspense fallback={<Loading />}>
         <CarModelsList makeId={params.makeId} year={params.year} />
       </Suspense>
