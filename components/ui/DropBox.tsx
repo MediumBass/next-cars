@@ -10,7 +10,7 @@ export const DropBox: React.FC = ({
   return (
     <div className="relative group ">
       <button
-        className={`min-w-[10rem] bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-[6vw] rounded inline-flex items-center ${
+        className={` bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-[6vw] rounded inline-flex items-center ${
           selectedItem ? 'bg-red-600' : 'bg-gray-700'
         }`}
       >

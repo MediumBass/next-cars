@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import CarModel from '../../../../components/ui/CarModel';
-import Header from '@/components/shared/Header';
 import Loading from '@/components/ui/Loading';
 
 

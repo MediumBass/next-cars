@@ -22,20 +22,20 @@ const MainContent: React.FC = () => {
   const [selectedMaker, setSelectedMaker] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    API.carTypes.fetchCarTypes(setVehicleTypes);
-    API.carYears.getYearsArray(setVehicleYears);
+    API.carTypes.fetchCarTypes?.(setVehicleTypes);
+    API.carYears.getYearsArray?.(setVehicleYears);
     console.log('BASE_URL:', process.env.NEXT_PUBLIC_BASE_URL);
   }, []);
 
   React.useEffect(() => {
     if (selectedType) {
-      API.carTypes.fetchCarMakers(setMakersYears, selectedType);
+      API.carTypes.fetchCarMakers?.(setMakersYears, selectedType);
     }
   }, [selectedType]);
 
   return (
     <div className="flex">
-      <div className="flex justify-between px-6 py-4 bg-white shadow-md">
+      <div className="flex h-screen justify-between px-6 py-4 bg-white shadow-md">
         <Suspense fallback={<Loading />}>
           <DropBox
             title={'Choose Vehicle Type'}
@@ -61,15 +61,14 @@ const MainContent: React.FC = () => {
             selectedItem={selectedMaker}
           />
         </Suspense>
+        <Button
+            variant={selectedType ? 'destructive' : 'default'}
+            onClick={() => handleNextPageClick(selectedMaker, selectedYear)}
+            disabled={!selectedType || !selectedMaker}
+        >
+          Next
+        </Button>
       </div>
-
-      <Button
-        variant={selectedType ? 'destructive' : 'default'}
-        onClick={() => handleNextPageClick(selectedMaker, selectedYear)}
-        disabled={!selectedType || !selectedMaker}
-      >
-        Next
-      </Button>
     </div>
   );
 };
