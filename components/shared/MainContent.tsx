@@ -34,8 +34,8 @@ const MainContent: React.FC = () => {
   }, [selectedType]);
 
   return (
-    <div className="flex">
-      <div className="flex h-screen justify-between px-6 py-4 bg-white shadow-md">
+    <div className="flex overflow-x-auto py-4">
+      <div className="flex h-screen justify-between px-6 py-4">
         <Suspense fallback={<Loading />}>
           <DropBox
             title={'Choose Vehicle Type'}
